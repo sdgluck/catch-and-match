@@ -52,7 +52,7 @@ __cb__ {Function} error-first callback indicating success of catch and match
     });
 
     // Passes with function matcher
-    it('should throw an error without correct arguments', function (cb) {
+    it('should throw an error without correct arguments', function () {
         return catchAndMatch(log.bind(undefined, 10), function (err) {
             return err.indexOf('should be a string') !== -1;
         });
