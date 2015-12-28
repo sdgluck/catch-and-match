@@ -1,0 +1,67 @@
+{
+  "name": "catch-and-match",
+  "version": "0.0.1",
+  "description": "A wrapper library for the Background Sync API.",
+  "author": "Sam Gluck <sdgluck@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdgluck/catch-and-match.git"
+  },
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/_mocha test",
+    "lint": "eslint index.js",
+    "build": "babel ./src --out-dir ./bin",
+    "check": "npm run -s lint && npm run -s build",
+    "prepublish": "npm run check && npm run build"
+  },
+  "bugs": {
+    "url": "https://github.com/sdgluck/catch-and-match/issues"
+  },
+  "keywords": [
+    "catch",
+    "match",
+    "try",
+    "test",
+    "helper",
+    "assert",
+    "expect"
+  ],
+  "babel": {
+    "plugins": ["add-module-exports"],
+    "presets": [
+      "es2015",
+      "stage-0"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.2.0",
+    "babel-eslint": "^5.0.0-beta4",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-stage-0": "^6.3.13",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^2.1.1",
+    "eslint-config-airplus": "^1.0.6",
+    "eslint-plugin-react": "^3.13.1",
+    "mocha": "^2.3.4"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "airbnb",
+      "airplus"
+    ],
+    "env": {
+      "browser": true,
+      "node": false
+    },
+    "rules": {
+      "space-before-function-paren": [2, "always"],
+      "padded-blocks": [1, "never"],
+      "object-curly-spacing": [2, "always"],
+      "brace-style": [2, "stroustrup"],
+      "consistent-return": 0
+    }
+  }
+}
