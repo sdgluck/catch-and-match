@@ -11,6 +11,12 @@ Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
 
     npm install catch-and-match --save-dev
 
+## Catch and Match
+
+Sometimes asserting that something _just throws_ isn't enough. `catch-and-match` allows you to assert that a function
+which should throw _throws an error you expect_. This is particularly useful for testing modules that produce error
+messages which change... so, pretty much any module that provides useful feedback (the best kind of modules!).
+
 ## Usage
 
 `catchAndMatch(fn, matcher[, cb])`
