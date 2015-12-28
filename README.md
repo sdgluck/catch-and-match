@@ -1,6 +1,6 @@
 # catch-and-match
 
-> A simple utility for testing and inspecting an error thrown by a function.
+> A simple utility for testing and inspecting an error thrown (a)synchronously by a function.
 
 Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
 
@@ -21,7 +21,7 @@ messages which provide useful feedback (the best kind of modules!).
 
 `catchAndMatch(fn, matcher[, cb])`
 
-__fn__ {Function} function that should throw
+__fn__ {Function} function that should throw traditionally or within a Promise
 
 - if `fn` does not throw, catch and match returns a rejected Promise and calls `cb` with an error as its first argument
 - if `fn` throws the error is tested against `matcher` (see below)
