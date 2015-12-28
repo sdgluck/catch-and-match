@@ -34,7 +34,7 @@ __matcher__ {RegExp|String|Function} method of inspecting error:
 
 __cb__ {Function} error-first callback indicating success of catch and match
 
-## Example Usage
+## Examples
 
     function log (str) {
         if (typeof str !== 'string') {
