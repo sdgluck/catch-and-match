@@ -12,7 +12,7 @@
     "test": "node ./node_modules/mocha/bin/_mocha test",
     "lint": "eslint ./src",
     "build": "babel ./src --out-dir ./bin",
-    "prepublish": "eslint ./src && npm run build"
+    "prepublish": "npm run -s lint && npm run build"
   },
   "bugs": {
     "url": "https://github.com/sdgluck/catch-and-match/issues"
