@@ -47,10 +47,11 @@ __cb__ {Function} error-first callback indicating success of catch and match
     // Fails with RegExp matcher
     it('should throw an error without correct arguments', function (cb) {
         catchAndMatch(log.bind(undefined, 10), /should be a string/, cb);
-        // catchAndMatch(log.bind(undefined, 10), cb);
+        // or, using Promises:
+        // return catchAndMatch(log.bind(undefined, 10));
     });
 
-    // Passes with custom inspection
+    // Passes with function matcher
     it('should throw an error without correct arguments', function (cb) {
         return catchAndMatch(log.bind(undefined, 10), function (err) {
             return err.indexOf('should be a string') !== -1;

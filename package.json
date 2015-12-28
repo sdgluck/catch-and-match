@@ -1,6 +1,6 @@
 {
   "name": "catch-and-match",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A wrapper library for the Background Sync API.",
   "author": "Sam Gluck <sdgluck@gmail.com>",
   "license": "MIT",
