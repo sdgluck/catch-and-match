@@ -10,10 +10,9 @@
   },
   "scripts": {
     "test": "node ./node_modules/mocha/bin/_mocha test",
-    "lint": "eslint index.js",
+    "lint": "eslint ./src",
     "build": "babel ./src --out-dir ./bin",
-    "check": "npm run -s lint && npm run -s build",
-    "prepublish": "npm run check && npm run build"
+    "prepublish": "eslint ./src && npm run build"
   },
   "bugs": {
     "url": "https://github.com/sdgluck/catch-and-match/issues"

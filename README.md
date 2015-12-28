@@ -19,7 +19,7 @@ __fn__ {Function} function that should throw
 
 __matcher__ {RegExp|String|Function} method of inspecting error:
 
-- a Function is passed the Error
+- a Function is passed the Error and should return true when the test should pass
 - a String is turned to simple RegExp (`new RegExp(str)`)
 - a RegExp is tested against the Error message (`re.test(err.message)`)
 

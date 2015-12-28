@@ -24,7 +24,7 @@
  * @returns {Promise}
  * @throws Error
  */
-export default function catchAndMatch (fn, matcher, cb = function () {}) {
+export default function catchAndMatch (fn, matcher, cb = () => {}) {
 
     if (typeof fn !== 'function') {
         throw new Error('fn should be a function');
@@ -36,15 +36,15 @@ export default function catchAndMatch (fn, matcher, cb = function () {}) {
         throw new Error('cb should be a function');
     }
 
-    function doesMatch (matcher, err) {
-        if (typeof matcher === 'string') {
-            matcher = new RegExp(matcher);
+    function doesMatch (_value, err) {
+        const value = typeof _value === 'string' ?
+            new RegExp(_value) :
+            _value;
+        if (value instanceof RegExp) {
+            return value.test(err.message);
         }
-        if (matcher instanceof RegExp) {
-            return matcher.test(err.message);
-        }
-        else if (typeof matcher === 'function') {
-            return matcher(err);
+        else if (typeof value === 'function') {
+            return value(err);
         }
     }
 
@@ -58,10 +58,10 @@ export default function catchAndMatch (fn, matcher, cb = function () {}) {
             return result
                 .catch(cb.bind(undefined, undefined))
                 .then(failed);
-        } else {
-            failed();
         }
-    } catch (err) {
+        failed();
+    }
+    catch (err) {
         if (doesMatch(matcher, err)) {
             cb();
             return Promise.resolve();
@@ -70,4 +70,4 @@ export default function catchAndMatch (fn, matcher, cb = function () {}) {
         cb(new Error(failMessage));
         return Promise.reject(failMessage);
     }
-};
+}
