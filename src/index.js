@@ -40,14 +40,20 @@ export default function catchAndMatch (fn, matcher, cb) {
         .resolve()
         .then(fn)
         .then(() => {
-            cb && cb(new Error('no error thrown'));
+            if (cb) {
+                cb(new Error('no error thrown'));
+            }
             return Promise.reject();
         }, (err) => {
             if (doesMatch(matcher, err)) {
-                cb && cb();
+                if (cb) {
+                    cb();
+                }
                 return Promise.resolve();
             }
-            cb && cb(new Error('error does not satisfy matcher'));
+            if (cb) {
+                cb(new Error('error does not satisfy matcher'));
+            }
             return Promise.reject();
         });
 }
