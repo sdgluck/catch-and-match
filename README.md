@@ -17,6 +17,9 @@ Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
 
 __fn__ {Function} function that should throw
 
+- if `fn` does not throw, catch and match returns a rejected Promise and calls `cb` with an error as its first argument
+- if `fn` throws the error is tested against `matcher` (see below)
+
 __matcher__ {RegExp|String|Function} method of inspecting error:
 
 - a Function is passed the Error and should return true when the test should pass
