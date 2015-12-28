@@ -2,9 +2,14 @@
 
 > A simple utility for testing and inspecting an error thrown by a function.
 
+Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
+
+<a href="http://badge.fury.io/js/catch-and-match"><img alt="npm version" src="https://badge.fury.io/js/catch-and-match.svg"></a>
+<a href="https://travis-ci.org/sdgluck/catch-and-match"><img alt="CI build status" src="https://travis-ci.org/sdgluck/catch-and-match.svg"></a>
+
 ## Install
 
-    $ npm install catch-and-match --save-dev
+    npm install catch-and-match --save-dev
 
 ## Usage
 
