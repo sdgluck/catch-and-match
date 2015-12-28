@@ -1,7 +1,7 @@
 {
   "name": "catch-and-match",
   "version": "0.0.3",
-  "description": "A wrapper library for the Background Sync API.",
+  "description": "A simple utility for testing and inspecting an error thrown by a function.",
   "author": "Sam Gluck <sdgluck@gmail.com>",
   "license": "MIT",
   "repository": {
