@@ -14,7 +14,7 @@ Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
 ## Catch and Match
 
 Sometimes asserting that something _just throws_ isn't enough. `catch-and-match` allows you to assert that a function
-which should throw _throws an error you expect_. This is particularly useful for testing functions that produce error
+which should throw _throws the error you expect_. This is particularly useful for testing functions that produce error
 messages which provide useful feedback (the best kind of modules!).
 
 ## Usage
@@ -60,7 +60,7 @@ __cb__ {Function} error-first callback indicating success of catch and match
     // Passes with function matcher
     it('should throw an error without correct arguments', function () {
         return catchAndMatch(log.bind(undefined, 10), function (err) {
-            return err.indexOf('should be a string') !== -1;
+            return err.includes('should be a string');
         });
     });
 
