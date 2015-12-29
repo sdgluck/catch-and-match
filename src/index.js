@@ -37,7 +37,8 @@ export default function catchAndMatch (fn, matcher, cb) {
     }
 
     return Promise
-        .resolve(fn())
+        .resolve()
+        .then(fn)
         .then(() => {
             if (cb) {
                 cb(new Error('no error thrown'));
