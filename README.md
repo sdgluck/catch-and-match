@@ -36,12 +36,37 @@ __cb__ {Function} error-first callback indicating success of catch and match
 
 ## Examples
 
+If in your tests you are placing function invocations within a `try` block to purposefully cause them to throw and then
+calling the test's 'done' callback within the `catch` after inspecting the error, you can replace this pattern with a
+`catchAndMatch`:
+
+__Example function__
+
     function log (str) {
         if (typeof str !== 'string') {
             throw new Error('str should be a string');
         }
         console.log(str);
     }
+
+__Before__
+
+    it('should throw an error without correct arguments', function (cb) {
+        try {
+            // make the function throw by passing an illegal argument
+            log(10);
+        } catch (err) {
+            // inspect that the error thrown has the right message
+            if (err.message.includes('should be a string')) {
+                cb();
+                return;
+            }
+            // the wrong error was thrown, so fail the test
+            cb(new Error('wrong error thrown'));
+        }
+    });
+
+__After__
 
     // Passes with string matcher
     it('should throw an error without correct arguments', function (cb) {

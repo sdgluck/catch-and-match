@@ -1,6 +1,6 @@
 {
   "name": "catch-and-match",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A simple utility for testing and inspecting an error thrown (a)synchronously by a function.",
   "author": "Sam Gluck <sdgluck@gmail.com>",
   "license": "MIT",
