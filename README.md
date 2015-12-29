@@ -1,6 +1,6 @@
 # catch-and-match
 
-> Assert an error thrown (a)synchronously by a function
+> Assert an error thrown (a)synchronously by a function meets some criteria.
 
 Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
 
