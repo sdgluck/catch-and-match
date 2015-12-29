@@ -7,7 +7,7 @@
  * callbacks to accommodate asynchronicity.
  *
  * @param {Function} fn function to execute within a try/catch
- * @param {RegExp|String|Function} matcher regular expression to match error message against
+ * @param {RegExp|String|Function|Error} matcher to match error against
  * @param {Function} [cb] callback to invoke on success
  * @returns {Promise|undefined} returns resolved Promise on success
  * @throws Error when `fn` does not throw or error does not satisfy `matcher`
@@ -37,8 +37,7 @@ export default function catchAndMatch (fn, matcher, cb) {
     }
 
     return Promise
-        .resolve()
-        .then(fn)
+        .resolve(fn())
         .then(() => {
             if (cb) {
                 cb(new Error('no error thrown'));
