@@ -15,7 +15,7 @@ Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
 
 Sometimes asserting that something _just throws_ isn't enough. `catch-and-match` allows you to assert that a function
 which should throw _throws the error you expect_. This is particularly useful for testing functions that produce error
-messages which provide useful feedback (the best kind of modules!).
+messages which provide useful feedback (the best kind of functions!).
 
 ## Usage
 
