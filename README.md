@@ -66,20 +66,11 @@ __Before__
         }
     });
 
-__After__
+__After, using Promise__
 
     // Passes with string matcher
-    it('should throw an error without correct arguments', function (cb) {
-        catchAndMatch(log.bind(undefined, 'hello'), /should be a string/, cb);
-        // or, using Promises:
-        // return catchAndMatch(log.bind(undefined, 'hello'));
-    });
-
-    // Fails with RegExp matcher
-    it('should throw an error without correct arguments', function (cb) {
-        catchAndMatch(log.bind(undefined, 10), /should be a string/, cb);
-        // or, using Promises:
-        // return catchAndMatch(log.bind(undefined, 10));
+    it('should throw an error without correct arguments', function () {
+        return catchAndMatch(log.bind(undefined, 'hello'), /should be a string/);
     });
 
     // Passes with function matcher
@@ -87,5 +78,12 @@ __After__
         return catchAndMatch(log.bind(undefined, 10), function (err) {
             return err.includes('should be a string');
         });
+    });
+    
+__After, using callback__
+
+    // Fails with RegExp matcher
+    it('should throw an error without correct arguments', function (cb) {
+        catchAndMatch(log.bind(undefined, 10), /should be a string/, cb);
     });
 
