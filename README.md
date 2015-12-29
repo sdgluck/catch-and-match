@@ -1,6 +1,6 @@
 # catch-and-match
 
-> A simple utility for testing and inspecting an error thrown (a)synchronously by a function.
+> Assert an error thrown (a)synchronously by a function
 
 Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
 
