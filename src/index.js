@@ -1,6 +1,50 @@
 'use strict';
 
 /**
+ * Validate arguments given to `catchAndMatch`.
+ * @param {Function} fn
+ * @param {Object} matcher
+ * @param {Function|undefined} cb
+ */
+function validateArguments (fn, matcher, cb) {
+    if (typeof fn !== 'function') {
+        throw new Error('fn should be a function');
+    }
+    if (
+        !(matcher instanceof RegExp) &&
+        ['function', 'string'].indexOf(typeof matcher) === -1 &&
+        matcher.constructor !== Error.constructor
+    ) {
+        throw new Error('matcher should be a string, function, regular expression, or Error');
+    }
+    if (cb && typeof cb !== 'function') {
+        throw new Error('cb should be a function');
+    }
+}
+
+/**
+ * Determine if the given error satisfies the matcher defined by `_matcher`.
+ * @param {Object} _matcher matcher
+ * @param {Error} err error to match against
+ * @returns {Boolean}
+ */
+function doesMatch (_matcher, err) {
+    const matcher = typeof _matcher === 'string' ?
+        new RegExp(_matcher) :
+        _matcher;
+    if (matcher instanceof RegExp) {
+        return matcher.test(err.message);
+    }
+    else if (typeof matcher === 'function') {
+        return matcher(err);
+    }
+    else if (matcher.constructor === Error.constructor) {
+        return err instanceof matcher;
+    }
+    return false;
+}
+
+/**
  * Invoke a function within a try block expecting an error to be thrown
  * and match the error message against a regular expression. The function returns a
  * Promise on success or you can pass it an optional callback if your test suite uses
@@ -14,46 +58,22 @@
  */
 export default function catchAndMatch (fn, matcher, cb) {
 
-    if (typeof fn !== 'function') {
-        throw new Error('fn should be a function');
-    }
-    if (!(matcher instanceof RegExp) && ['function', 'string'].indexOf(typeof matcher) === -1) {
-        throw new Error('matcher should be a string, function, or regular expression');
-    }
-    if (cb && typeof cb !== 'function') {
-        throw new Error('cb should be a function');
-    }
-
-    function doesMatch (_value, err) {
-        const value = typeof _value === 'string' ?
-            new RegExp(_value) :
-            _value;
-        if (value instanceof RegExp) {
-            return value.test(err.message);
-        }
-        else if (typeof value === 'function') {
-            return value(err);
-        }
-    }
+    validateArguments(fn, matcher, cb);
 
     return Promise
         .resolve()
         .then(fn)
         .then(() => {
-            if (cb) {
-                cb(new Error('no error thrown'));
-            }
-            return Promise.reject();
+            const error = new Error('no error thrown');
+            if (cb) cb(error);
+            return Promise.reject(error);
         }, (err) => {
             if (doesMatch(matcher, err)) {
-                if (cb) {
-                    cb();
-                }
+                if (cb) cb();
                 return Promise.resolve();
             }
-            if (cb) {
-                cb(new Error('error does not satisfy matcher'));
-            }
-            return Promise.reject();
+            const error = new Error('error does not satisfy matcher');
+            if (cb) cb(error);
+            return Promise.reject(error);
         });
 }
