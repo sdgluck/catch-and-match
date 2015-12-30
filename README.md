@@ -32,7 +32,7 @@ messages which provide useful feedback (the best kind of functions!).
 
 ## Usage
 
-`catchAndMatch(fn, matcher[, cb])`
+`catchAndMatch(fn, matcher[, cb]) : Promise`
 
 __fn__ {Function} function that should throw traditionally or within a Promise
 
@@ -46,7 +46,7 @@ __matcher__ {RegExp|String|Function|Error} method of inspecting error:
 - a RegExp is tested against the error message (`re.test(err.message)`)
 - an Error (any constructor that inherits from `Error`) is matched against the error (e.g. `err.constructor === ReferenceError`)
 
-__cb__ {Function} error-first callback indicating success of catch and match
+__cb__ {Function} _(optional)_ error-first callback
 
 ## Examples
 
