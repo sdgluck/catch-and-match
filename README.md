@@ -22,12 +22,12 @@ messages which provide useful feedback (the best kind of functions!).
         try {                                            |   catchAndMatch(
             String(a);  // a === undefined               |       () => String(a),
         } catch (err) {                                  |       ReferenceError,
-            if (!(err instanceof ReferenceError)) {      |       cb
-                cb(new Error('incorrect error msg'));    |   );
-                return;                                  |
-            }                                            |
-            cb();                                        |
-        }                                                |
+            if (!(err instanceof ReferenceError)) {      |       cb);
+                cb(new Error());                         |   
+                return;                                  |   // Or return a Promise
+            }                                            |   return catchAndMatch(
+            cb();                                        |       () => String(a),
+        }                                                |       ReferenceError);
     });                                              
 
 ## Usage
