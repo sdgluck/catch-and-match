@@ -17,21 +17,34 @@ Sometimes asserting that something _just throws_ isn't enough. `catch-and-match`
 which should throw _throws the error you expect_. This is particularly useful for testing functions that produce error
 messages which provide useful feedback (the best kind of functions!).
 
+    it('should throw a ReferenceError', function (cb) {
+        // Without catch-and-match                       |   // With catch-and-match
+        try {                                            |   catchAndMatch(
+            String(a);  // a === undefined               |       () => String(a), // fn that should throw
+        } catch (err) {                                  |       ReferenceError, // expected error type
+            if (!(err instanceof ReferenceError)) {      |       cb // test done callback
+                cb(new Error('incorrect error msg'));    |   );
+                return;                                  |
+            }                                            |
+            cb();                                        |
+        }                                                |
+    });                                              
+
 ## Usage
 
 `catchAndMatch(fn, matcher[, cb])`
 
 __fn__ {Function} function that should throw traditionally or within a Promise
 
-- if `fn` does not throw, catch and match returns a rejected Promise and calls `cb` with an error as its first argument
+- if `fn` does not throw, `catch-and-match` returns a rejected Promise and calls `cb` with an error as its first argument
 - if `fn` throws the error is tested against `matcher` (see below)
 
-__matcher__ {RegExp|String|Function} method of inspecting error:
+__matcher__ {RegExp|String|Function|Error} method of inspecting error:
 
 - a Function is passed the error and should return true when the test should pass
 - a String is turned to simple RegExp (`new RegExp(str)`)
 - a RegExp is tested against the error message (`re.test(err.message)`)
-- an Error constructor is matched against the constructor of the error (`err.constructor === ReferenceError`)
+- an Error (any constructor that inherits from `Error`) is matched against the error (e.g. `err.constructor === ReferenceError`)
 
 __cb__ {Function} error-first callback indicating success of catch and match
 
