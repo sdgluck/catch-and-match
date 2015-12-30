@@ -20,9 +20,9 @@ messages which provide useful feedback (the best kind of functions!).
     it('should throw a ReferenceError', function (cb) {
         // Without catch-and-match                       |   // With catch-and-match
         try {                                            |   catchAndMatch(
-            String(a);  // a === undefined               |       () => String(a), // fn that should throw
-        } catch (err) {                                  |       ReferenceError, // expected error type
-            if (!(err instanceof ReferenceError)) {      |       cb // test done callback
+            String(a);  // a === undefined               |       () => String(a),
+        } catch (err) {                                  |       ReferenceError,
+            if (!(err instanceof ReferenceError)) {      |       cb
                 cb(new Error('incorrect error msg'));    |   );
                 return;                                  |
             }                                            |
