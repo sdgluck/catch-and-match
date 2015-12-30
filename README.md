@@ -31,6 +31,7 @@ __matcher__ {RegExp|String|Function} method of inspecting error:
 - a Function is passed the Error and should return true when the test should pass
 - a String is turned to simple RegExp (`new RegExp(str)`)
 - a RegExp is tested against the Error message (`re.test(err.message)`)
+- an Error constructor is matched against the constructor of the error, e.g. `err.constructor === ReferenceError`
 
 __cb__ {Function} error-first callback indicating success of catch and match
 
@@ -79,7 +80,7 @@ __After, using Promise__
             return err.includes('should be a string');
         });
     });
-    
+
 __After, using callback__
 
     // Fails with RegExp matcher
