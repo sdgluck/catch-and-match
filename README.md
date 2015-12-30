@@ -17,18 +17,40 @@ Sometimes asserting that something _just throws_ isn't enough. `catch-and-match`
 which should throw _throws the error you expect_. This is particularly useful for testing functions that produce error
 messages which provide useful feedback (the best kind of functions!).
 
+__Assert error is an instance of Error__ (e.g. ReferenceError)
+
     it('should throw a ReferenceError', function (cb) {
         // Without catch-and-match                   |  // With catch-and-match
         try {                                        |  catchAndMatch(
             String(a);  // a === undefined           |      () => String(a),
         } catch (err) {                              |      ReferenceError,
             if (!(err instanceof ReferenceError)) {  |      cb);
-                cb(new Error());                     |   
+                cb(new Error());                     |
                 return;                              |  // Or return a Promise
             }                                        |  return catchAndMatch(
             cb();                                    |      () => String(a),
         }                                            |      ReferenceError);
-    });                                              
+    });
+
+__Assert error message using a regular expression__
+
+    it('should throw with error message containing "not defined"', function (cb) {
+        return catchAndMatch(() => String(a), /not defined/);
+    });
+
+__Assert error message using a string__
+
+    it('should throw with error message "a is not defined"', function (cb) {
+        return catchAndMatch(() => String(a), 'a is not defined');
+    });
+
+__Assert error matches custom validation__
+
+    it('should throw with error message "a is not defined"', function (cb) {
+        return catchAndMatch(() => String(a), function (err) {
+            return err.message === 'a is not defined';
+        });
+    });
 
 ## Usage
 
