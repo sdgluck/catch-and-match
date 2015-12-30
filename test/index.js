@@ -4,11 +4,11 @@ var catchAndMatch = require('../index.js');
 
 describe('Catch and match', function () {
 
-    const throwFns = {
-        sync: () => {
+    var throwFns = {
+        sync: function () {
             throw new Error('the error message');
         },
-        async: () => {
+        async: function () {
             return new Promise((resolve, reject) => {
                 reject(new Error('the error message'));
             });
@@ -19,7 +19,7 @@ describe('Catch and match', function () {
 
     Object.keys(throwFns).forEach(function (fnType) {
 
-        const throws = throwFns[fnType];
+        var throws = throwFns[fnType];
 
         describe(fnType + ' fn', function () {
 
