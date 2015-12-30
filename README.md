@@ -18,16 +18,16 @@ which should throw _throws the error you expect_. This is particularly useful fo
 messages which provide useful feedback (the best kind of functions!).
 
     it('should throw a ReferenceError', function (cb) {
-        // Without catch-and-match                       |   // With catch-and-match
-        try {                                            |   catchAndMatch(
-            String(a);  // a === undefined               |       () => String(a),
-        } catch (err) {                                  |       ReferenceError,
-            if (!(err instanceof ReferenceError)) {      |       cb);
-                cb(new Error());                         |   
-                return;                                  |   // Or return a Promise
-            }                                            |   return catchAndMatch(
-            cb();                                        |       () => String(a),
-        }                                                |       ReferenceError);
+        // Without catch-and-match                   |  // With catch-and-match
+        try {                                        |  catchAndMatch(
+            String(a);  // a === undefined           |      () => String(a),
+        } catch (err) {                              |      ReferenceError,
+            if (!(err instanceof ReferenceError)) {  |      cb);
+                cb(new Error());                     |   
+                return;                              |  // Or return a Promise
+            }                                        |  return catchAndMatch(
+            cb();                                    |      () => String(a),
+        }                                            |      ReferenceError);
     });                                              
 
 ## Usage
