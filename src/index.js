@@ -56,7 +56,7 @@ function doesMatch (_matcher, err) {
  * @returns {Promise|undefined} returns resolved Promise on success
  * @throws Error when `fn` does not throw or error does not satisfy `matcher`
  */
-export default function catchAndMatch (fn, matcher, cb) {
+function catchAndMatch (fn, matcher, cb) {
 
     validateArguments(fn, matcher, cb);
 
@@ -77,3 +77,15 @@ export default function catchAndMatch (fn, matcher, cb) {
             return Promise.reject(error);
         });
 }
+
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define('catchAndMatch', factory);
+    } else if (typeof module === 'object' && module.exports) {
+        module.exports = factory();
+    } else {
+        root.catchAndMatch = factory();
+    }
+}(this, function () {
+    return catchAndMatch;
+}));

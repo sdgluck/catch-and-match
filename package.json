@@ -1,6 +1,6 @@
 {
   "name": "catch-and-match",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Assert an error thrown (a)synchronously by a function.",
   "author": "Sam Gluck <sdgluck@gmail.com>",
   "license": "MIT",
@@ -27,9 +27,6 @@
     "expect"
   ],
   "babel": {
-    "plugins": [
-      "add-module-exports"
-    ],
     "presets": [
       "es2015",
       "stage-0"
@@ -38,7 +35,6 @@
   "devDependencies": {
     "babel-cli": "^6.2.0",
     "babel-eslint": "^5.0.0-beta4",
-    "babel-plugin-add-module-exports": "^0.1.2",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-stage-0": "^6.3.13",
     "eslint": "^1.10.3",
