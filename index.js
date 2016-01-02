@@ -44,7 +44,6 @@ function doesMatch(_matcher, err) {
  * and match the error message against a regular expression. The function returns a
  * Promise on success or you can pass it an optional callback if your test suite uses
  * callbacks to accommodate asynchronicity.
- *
  * @param {Function} fn function to execute within a try/catch
  * @param {RegExp|String|Function|Error} matcher to match error against
  * @param {Function} [cb] callback to invoke on success
@@ -70,15 +69,11 @@ function catchAndMatch(fn, matcher, cb) {
     });
 }
 
-(function (root, factory) {
-    /* global define:false */
-    if (typeof define === 'function' && define.amd) {
-        define('catchAndMatch', factory);
-    } else if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object' && module.exports) {
-        module.exports = factory();
-    } else {
-        root.catchAndMatch = factory();
-    }
-})(undefined, function () {
-    return catchAndMatch;
-});
+/* global define:false window:false */
+if (typeof define === 'function' && define.amd) {
+    define('catchAndMatch', catchAndMatch);
+} else if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object' && module.exports) {
+    module.exports = catchAndMatch;
+} else {
+    window.catchAndMatch = catchAndMatch;
+}

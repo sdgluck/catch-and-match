@@ -77,15 +77,13 @@ function catchAndMatch (fn, matcher, cb) {
         });
 }
 
-((root, factory) => {
-    /* global define:false */
-    if (typeof define === 'function' && define.amd) {
-        define('catchAndMatch', factory);
-    }
-    else if (typeof module === 'object' && module.exports) {
-        module.exports = factory();
-    }
-    else {
-        root.catchAndMatch = factory();
-    }
-})(this, () => catchAndMatch);
+/* global define:false window:false */
+if (typeof define === 'function' && define.amd) {
+    define('catchAndMatch', catchAndMatch);
+}
+else if (typeof module === 'object' && module.exports) {
+    module.exports = catchAndMatch;
+}
+else {
+    window.catchAndMatch = catchAndMatch;
+}
