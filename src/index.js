@@ -49,7 +49,6 @@ function doesMatch (_matcher, err) {
  * and match the error message against a regular expression. The function returns a
  * Promise on success or you can pass it an optional callback if your test suite uses
  * callbacks to accommodate asynchronicity.
- *
  * @param {Function} fn function to execute within a try/catch
  * @param {RegExp|String|Function|Error} matcher to match error against
  * @param {Function} [cb] callback to invoke on success
