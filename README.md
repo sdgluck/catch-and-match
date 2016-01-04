@@ -38,8 +38,8 @@ Replace catching a rejected Promise
 
     it('should throw a ReferenceError', function () {
         // Without catch-and-match                       |  // With catch-and-match
-        return someMethodThatRejects()                   |  catchAndMatch(
-            .catch((err) => {                            |      someMethodThatRejects,
+        return someFuncThatRejects()                     |  catchAndMatch(
+            .catch((err) => {                            |      someFuncThatRejects,
                 if (!(err instanceof ReferenceError)) {  |      ReferenceError);
                     return Promise.reject(new Error());  |
                 }                                        |  
