@@ -84,6 +84,9 @@ if (typeof define === 'function' && define.amd) {
 else if (typeof module === 'object' && module.exports) {
     module.exports = catchAndMatch;
 }
-else {
+else if (typeof window !== 'undefined') {
     window.catchAndMatch = catchAndMatch;
+}
+else {
+    throw new Error('Environment is not supported. Please raise an issue (github.com/sdgluck/catch-and-match/issues)');
 }
