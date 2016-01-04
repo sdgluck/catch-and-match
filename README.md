@@ -41,7 +41,7 @@ Replace catching a rejected Promise
         return someFuncThatRejects()                     |  catchAndMatch(
             .catch((err) => {                            |      someFuncThatRejects,
                 if (!(err instanceof ReferenceError)) {  |      ReferenceError);
-                    return Promise.reject(new Error());  |
+                    throw err;                           |
                 }                                        |  
             });                                          |
     });
