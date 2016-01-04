@@ -19,6 +19,8 @@ messages which provide useful feedback (the best kind of functions!).
 
 __Assert error is an instance of Error__ (e.g. ReferenceError)
 
+Replace a traditional try/catch
+
     it('should throw a ReferenceError', function (cb) {
         // Without catch-and-match                   |  // With catch-and-match
         try {                                        |  catchAndMatch(
@@ -30,6 +32,18 @@ __Assert error is an instance of Error__ (e.g. ReferenceError)
             }                                        |  return catchAndMatch(
             cb();                                    |      () => String(a),
         }                                            |      ReferenceError);
+    });
+    
+Replace catching a rejected Promise
+
+    it('should throw a ReferenceError', function (cb) {
+        // Without catch-and-match                       |  // With catch-and-match
+        return someMethodThatRejects()                   |  return catchAndMatch(
+            .catch((err) => {                            |      someMethodThatRejects,
+                if (!(err instanceof ReferenceError)) {  |      ReferenceError);
+                    return Promise.reject(new Error());  |
+                }                                        |
+            });                                          |
     });
 
 __Assert error message using a regular expression__
