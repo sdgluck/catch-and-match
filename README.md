@@ -36,13 +36,13 @@ Replace a traditional try/catch
     
 Replace catching a rejected Promise
 
-    it('should throw a ReferenceError', function (cb) {
+    it('should throw a ReferenceError', function () {
         // Without catch-and-match                       |  // With catch-and-match
-        return someMethodThatRejects()                   |  return catchAndMatch(
+        return someMethodThatRejects()                   |  catchAndMatch(
             .catch((err) => {                            |      someMethodThatRejects,
                 if (!(err instanceof ReferenceError)) {  |      ReferenceError);
                     return Promise.reject(new Error());  |
-                }                                        |
+                }                                        |  
             });                                          |
     });
 
