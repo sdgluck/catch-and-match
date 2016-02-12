@@ -1,6 +1,6 @@
 {
   "name": "catch-and-match",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Assert an error thrown (a)synchronously by a function.",
   "author": "Sam Gluck <sdgluck@gmail.com>",
   "license": "MIT",
