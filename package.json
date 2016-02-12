@@ -1,6 +1,6 @@
 {
   "name": "catch-and-match",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Assert an error thrown (a)synchronously by a function.",
   "author": "Sam Gluck <sdgluck@gmail.com>",
   "license": "MIT",
@@ -54,22 +54,10 @@
       "node": false
     },
     "rules": {
-      "space-before-function-paren": [
-        2,
-        "always"
-      ],
-      "padded-blocks": [
-        1,
-        "never"
-      ],
-      "object-curly-spacing": [
-        2,
-        "always"
-      ],
-      "brace-style": [
-        2,
-        "stroustrup"
-      ],
+      "space-before-function-paren": [2, "always"],
+      "padded-blocks": [1, "never"],
+      "object-curly-spacing": [2, "always"],
+      "brace-style": [2, "stroustrup"],
       "consistent-return": 0
     }
   }
