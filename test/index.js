@@ -27,7 +27,7 @@ describe('Catch and match', function () {
 
                 it('should fail when fn does not throw', function (cb) {
                     catchAndMatch(doesNotThrow, 'error message', function (err) {
-                        if (err.message === 'no error thrown') {
+                        if (err.message === 'No error thrown') {
                             cb();
                             return;
                         }
@@ -58,7 +58,7 @@ describe('Catch and match', function () {
 
                 it('should fail when fn does not throw', function (cb) {
                     catchAndMatch(doesNotThrow, /error message/, function (err) {
-                        if (err.message === 'no error thrown') {
+                        if (err.message === 'No error thrown') {
                             cb();
                             return;
                         }
@@ -91,7 +91,7 @@ describe('Catch and match', function () {
                     catchAndMatch(doesNotThrow, function (err) {
                         return err.message.indexOf('error message') > -1;
                     }, function (err) {
-                        if (err.message === 'no error thrown') {
+                        if (err.message === 'No error thrown') {
                             cb();
                             return;
                         }
@@ -128,7 +128,7 @@ describe('Catch and match', function () {
 
                 it('should fail when fn does not throw', function (cb) {
                     catchAndMatch(doesNotThrow, Error, function (err) {
-                        if (err.message === 'no error thrown') {
+                        if (err.message === 'No error thrown') {
                             cb();
                             return;
                         }
