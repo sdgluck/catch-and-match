@@ -40,7 +40,6 @@
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^2.1.1",
     "eslint-config-airplus": "^1.0.6",
-    "eslint-plugin-react": "^3.13.1",
     "mocha": "^2.3.4"
   },
   "eslintConfig": {
@@ -58,6 +57,7 @@
       "padded-blocks": [1, "never"],
       "object-curly-spacing": [2, "always"],
       "brace-style": [2, "stroustrup"],
+      "strict": 0,
       "consistent-return": 0
     }
   }

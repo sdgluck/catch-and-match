@@ -1,6 +1,6 @@
-'use strict';
-
 (function () {
+    'use strict';
+
     const unrecognisedMatcherMessage = 'Expected matcher to be a String/Function/RegExp/Error';
 
     /**
