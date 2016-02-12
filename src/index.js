@@ -64,7 +64,7 @@
      * @throws Error when `fn` does not throw or error does not satisfy `matcher`
      */
     function catchAndMatch (fn, matcher, cb) {
-        return isIllegalArguments({fn, matcher, cb})
+        return isIllegalArguments({ fn, matcher, cb })
             .then(fn, err => {
                 throw err;
             })
@@ -75,7 +75,7 @@
                 return Promise.reject(error);
             }, (err) => {
                 // Error was thrown - check that it satisfies the matcher
-                if (doesMatch({matcher, err})) {
+                if (doesMatch({ matcher, err })) {
                     if (cb) cb();
                     return Promise.resolve();
                 }
