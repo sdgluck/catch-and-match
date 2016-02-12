@@ -6,6 +6,7 @@ Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
 
 <a href="http://badge.fury.io/js/catch-and-match"><img alt="npm version" src="https://badge.fury.io/js/catch-and-match.svg"></a>
 <a href="https://travis-ci.org/sdgluck/catch-and-match"><img alt="CI build status" src="https://travis-ci.org/sdgluck/catch-and-match.svg"></a>
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 ## Install
 
@@ -33,7 +34,7 @@ Replace a traditional try/catch
             cb();                                    |      () => String(a),
         }                                            |      ReferenceError);
     });
-    
+
 Replace catching a rejected Promise
 
     it('should throw a ReferenceError', function () {
@@ -42,7 +43,7 @@ Replace catching a rejected Promise
             .catch((err) => {                            |      someFuncThatRejects,
                 if (!(err instanceof ReferenceError)) {  |      ReferenceError);
                     throw err;                           |
-                }                                        |  
+                }                                        |
             });                                          |
     });
 
@@ -136,4 +137,3 @@ __After, using callback__
     it('should throw an error without correct arguments', function (cb) {
         catchAndMatch(log.bind(undefined, 10), /should be a string/, cb);
     });
-
