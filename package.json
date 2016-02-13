@@ -1,6 +1,6 @@
 {
   "name": "catch-and-match",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "Assert an error thrown (a)synchronously by a function.",
   "author": "Sam Gluck <sdgluck@gmail.com>",
   "license": "MIT",
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "node ./node_modules/mocha/bin/_mocha test",
-    "lint": "standard",
+    "lint": "standard /src/index.js",
     "build": "babel ./src --out-dir ./",
     "prepublish": "npm run -s lint && npm run build && npm run -s test"
   },
