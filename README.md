@@ -137,3 +137,8 @@ __After, using callback__
     it('should throw an error without correct arguments', function (cb) {
         catchAndMatch(log.bind(undefined, 10), /should be a string/, cb);
     });
+
+## Contributing
+
+All pull requests and issues welcome!
+If you're not sure how, check out Kent C. Dodds' [great video tutorials on egghead.io](https://egghead.io/lessons/javascript-identifying-how-to-contribute-to-an-open-source-project-on-github)!
