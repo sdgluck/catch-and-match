@@ -89,7 +89,7 @@
   /* global define:false window:false */
   if (typeof define === 'function' && define.amd) {
     define('catchAndMatch', catchAndMatch)
-  } else if (typeof exports === 'object') {
+  } else if (typeof module !== 'undefined' && typeof exports === 'object') {
     module.exports = catchAndMatch
   } else if (typeof window !== 'undefined') {
     window.catchAndMatch = catchAndMatch
