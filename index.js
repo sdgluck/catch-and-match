@@ -94,7 +94,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   /* global define:false window:false */
   if (typeof define === 'function' && define.amd) {
     define('catchAndMatch', catchAndMatch);
-  } else if (typeof module !== 'undefined' && (typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') {
+  } else if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object' && module.exports) {
     module.exports = catchAndMatch;
   } else if (typeof window !== 'undefined') {
     window.catchAndMatch = catchAndMatch;
